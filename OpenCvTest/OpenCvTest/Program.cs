@@ -1,5 +1,5 @@
-﻿using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
+﻿//using OpenCvSharp;
+// using OpenCvSharp.CPlusPlus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,26 +14,33 @@ namespace OpenCvTest
         {
             try
             {
-                using (var cap = CvCapture.FromFile(@"00026.MTS"))
-                using (var cvWindow = new CvWindow("output"))
-                {
-                    cvWindow.Resize(1280, 720); 
-                    while (CvWindow.WaitKey(1) < 0)
-                    {
-                        Console.Write(".");
-                        using (var src = cap.QueryFrame())
-                        {
-                            if (src == null) break;
-                            using (var gray = new IplImage(src.Size, BitDepth.U8, 1))
-                            using (var canny = new IplImage(src.Size, BitDepth.U8, 1))
-                            {
-                                src.CvtColor(gray, ColorConversion.BgrToGray);
-                                Cv.Canny(gray, canny, 50, 50, ApertureSize.Size3);
-                                cvWindow.Image = canny;
-                            }
-                        }
-                    }
-                }
+                Console.WriteLine("Hey");
+                //using (var cap = CvCapture.FromFile(@"00026.MTS"))
+                //using (var cvWindow = new CvWindow("output"))
+                //{
+                //    var size = new Size(9, 9);
+                //    while (CvWindow.WaitKey(10) < 0)
+                //    {
+                //        using (IplImage imgSrc = cap.QueryFrame()) 
+                //        using (IplImage imgSmall = new IplImage(new Size(640, 480), BitDepth.U8, 1))
+                //        using (IplImage imgGray = new IplImage(imgSmall.Size, BitDepth.U8, 1)) 
+                //        {
+                //            cvWindow.ShowImage(imgSrc);
+                //            Cv.Resize(imgSrc, imgSmall);
+                //            Cv.CvtColor(imgSmall, imgGray, ColorConversion.BgrToGray);
+                //            Cv.Smooth(imgGray, imgGray, SmoothType.Gaussian, 9);
+                //            using (CvMemStorage storage = new CvMemStorage())
+                //            {
+                //                CvSeq<CvCircleSegment> seq = imgGray.HoughCircles(storage, HoughCirclesMethod.Gradient, 1, 100, 150, 55, 0, 0);
+                //                foreach (CvCircleSegment item in seq)
+                //                {
+                //                    imgGray.Circle(item.Center, (int)item.Radius, CvColor.Red, 3);
+                //                }
+                //                cvWindow.ShowImage(imgGray);
+                //            } 
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {
